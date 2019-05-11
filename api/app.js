@@ -9,7 +9,7 @@ const socket = require('./socket');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/Users');
-//var slotsRouter = require('./routes/Slots');
+const slotsRouter = require('./routes/Slots');
 
 const allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -23,8 +23,7 @@ const app = express();
 
 ////////Set up socket
 const server = http.createServer(app);
-const io = require('socket.io').listen(server);
-socket.SocketIO.setUpSocketConection(io);
+socket.SocketIO.setUpSocketConection(server);
 
 app.use(cors());
 
@@ -46,7 +45,7 @@ server.listen(3200, () =>
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-//app.use('/slots', slotsRouter);
+app.use('/slots', slotsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

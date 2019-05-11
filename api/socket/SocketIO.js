@@ -1,4 +1,7 @@
-function setUpSocketConection(io) {
+var io; 
+
+function setUpSocketConection(server) {
+    io = require('socket.io').listen(server);
     io.on('connection', function(client) {
         console.log('Client connected...');
     
@@ -23,6 +26,11 @@ function setUpSocketConection(io) {
     });
 }
 
+function broadcastMessage(message) {
+    io.soccket.emit("broadcast", message);
+}
+
 module.exports = {
-    setUpSocketConection: setUpSocketConection
+    setUpSocketConection: setUpSocketConection,
+    broadcastMessage: broadcastMessage
  };
