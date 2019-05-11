@@ -6,11 +6,18 @@ app.directive('login', function() {
     };
 });
 
+
 app.directive('client', function() {
     return {
       templateUrl: './clientUI/client.html'
     };
 });
+
+app.filter('counter', [function() {
+    return function(seconds) {
+        return new Date(1970, 0, 1).setSeconds(seconds);
+    };
+}]);
 
 /*app.directive('openlayer', function() {
     return {
@@ -18,11 +25,13 @@ app.directive('client', function() {
     };
 });*/
 
-app.controller('clientUiController', ['$scope','$http', function($scope,$http) {
+
+app.controller('clientUiController', ['$scope','$http','$interval' ,function($scope,$http,$interval) {
     $scope.userToken = "";
     $scope.mainClientUIVisible = true;
     $scope.loginPageVisible = false;
     $scope.openlayerVisible = false;
+    $scope.cancelTimer = false;
     $scope.searchDate = new Date();
     $scope.searchTime = new Date(0, 0, 0, 0,0,0);
     $scope.login = function() {
@@ -44,4 +53,13 @@ app.controller('clientUiController', ['$scope','$http', function($scope,$http) {
         $scope.openlayerVisible = true;
         $scope.mainClientUIVisible = false;
     }
+    $scope.counter = 10;
+    var intervalTime=null;   
+    intervalTime = $interval(function(){$scope.counter--; 
+        if($scope.counter == 0){
+            $interval.cancel(intervalTime);
+            intervalTime = null;
+            $scope.cancelTimer = true;
+        }
+    },1000);
 }]);

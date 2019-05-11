@@ -17,6 +17,14 @@
     border: 2px solid #fff;
 }
 
+.cancelTimerClass {
+    background-color:red;
+}
+
+.successTimerClass {
+    background-color: green;
+}
+
 .timerLabel {
     color:#fff;
     width: 100%;
