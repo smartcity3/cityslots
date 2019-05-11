@@ -12,10 +12,17 @@ app.directive('client', function() {
     };
 });
 
+/*app.directive('openlayer', function() {
+    return {
+      templateUrl: '../openLayers/index.html'
+    };
+});*/
+
 app.controller('clientUiController', ['$scope','$http', function($scope,$http) {
     $scope.userToken = "";
     $scope.mainClientUIVisible = true;
     $scope.loginPageVisible = false;
+    $scope.openlayerVisible = false;
     $scope.searchDate = new Date();
     $scope.searchTime = new Date(0, 0, 0, 0,0,0);
     $scope.login = function() {
@@ -32,5 +39,9 @@ app.controller('clientUiController', ['$scope','$http', function($scope,$http) {
 		},function(error){
 			$scope.loginMsg = "Failed Login!"
 		});
+    }
+    $scope.search = function() {
+        $scope.openlayerVisible = true;
+        $scope.mainClientUIVisible = false;
     }
 }]);
