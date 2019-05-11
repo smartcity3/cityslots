@@ -1,4 +1,4 @@
-app = angular.module('clientUiModule', ['ui.bootstrap']);
+app = angular.module('clientUiModule', ['ui.bootstrap','openlayers-directive']);
 
 app.directive('login', function() {
     return {
@@ -10,6 +10,12 @@ app.directive('login', function() {
 app.directive('client', function() {
     return {
       templateUrl: './clientUI/client.html'
+    };
+});
+
+app.directive('slotselector', function() {
+    return {
+      templateUrl: './slotsSelector/slotselector.html'
     };
 });
 
@@ -30,7 +36,7 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
     $scope.userToken = "";
     $scope.mainClientUIVisible = true;
     $scope.loginPageVisible = false;
-    $scope.openlayerVisible = false;
+    $scope.slotSelectorVisible = false;
     $scope.cancelTimer = false;
     $scope.searchDate = new Date();
     $scope.searchTime = new Date(0, 0, 0, 0,0,0);
@@ -50,7 +56,7 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
 		});
     }
     $scope.search = function() {
-        $scope.openlayerVisible = true;
+        $scope.slotSelectorVisible = true;
         $scope.mainClientUIVisible = false;
     }
     $scope.counter = 10;
@@ -62,4 +68,42 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
             $scope.cancelTimer = true;
         }
     },1000);
+
+    $scope.showDetails = function(id) {
+        alert('lat: '+ id.lat+', '+'lon: '+id.lon);
+      };
+    angular.extend($scope, {
+    center: {
+        lat: 37.9838179,
+        lon: 23.6684003,
+        zoom: 19
+    },
+    finisterre: {
+        lat: 37.983684,
+        lon: 23.668459,
+        label: {
+        show: true,
+        },
+        onClick: function (event, properties) {
+        alert('lat: '+ properties.lat+', '+'lon: '+properties.lon);
+        }
+    },
+    orizomilon: {
+        lat: 37.983837,
+        lon: 23.668459,
+        label: {
+            show: true
+        }
+    },
+    santacomba: {
+        lat: 37.983967,
+        lon: 23.668046,
+        label: {
+        show: true,
+        },
+        onClick: function (event, properties) {
+        alert('lat: '+ properties.lat+', '+'lon: '+properties.lon);
+        }
+    }
+    });
 }]);
