@@ -1,4 +1,4 @@
-var clientsConnected = [];
+var clientsConnected = {};
 
 function setUpSocketConection(io) {
     io.on('connection', function(client) {
@@ -6,6 +6,7 @@ function setUpSocketConection(io) {
     
         client.on('join', function(data) {
             console.log(data);
+            clientsConnected[data.id] = client.id;
         });
     
         client.on('messages', function(data) {
@@ -13,7 +14,6 @@ function setUpSocketConection(io) {
               // client.broadcast.emit('broad',data);
               //console.log(data);
         });
-    
     });
 }
 
