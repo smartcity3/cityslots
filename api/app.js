@@ -1,12 +1,14 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+const http = require('http');
+const socket = require('./socket');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/Users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/Users');
 //var slotsRouter = require('./routes/Slots');
 
 const allowCrossDomain = function(req, res, next) {
@@ -17,7 +19,12 @@ const allowCrossDomain = function(req, res, next) {
   next();
 }
 
-var app = express();
+const app = express();
+
+////////Set up socket
+const server = http.createServer(app);
+const io = require('socket.io').listen(server);
+socket.SocketIO.setUpSocketConection(io);
 
 app.use(cors());
 

@@ -7,9 +7,9 @@ router.use(security.Authentication.tokenCheckerMiddleware);
 
 router.post('/login/', async function(req, res, next) {
   let token = await security.Authentication.authenticateUser(req.body.username, req.body.password)
-  if(token != null && Object.keys(token).length > 0 ) {
+  if(token != null && Object.keys(token).length > 0 )
     res.send({success: true, token: token})
-  } else
+  else
     res.json(boom.unauthorized('Wrong Crendentials').output.payload);
 });
 
