@@ -1,0 +1,109 @@
+/* app css stylesheet */
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.header{
+  height:50px;
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.25);
+}
+
+.full{
+  width:100%;
+  height:100%;
+}
+
+.main{
+  width:100%;
+  height: calc(100% - 50px);
+}
+
+.footer {
+  text-align: center;
+  padding: 5px;
+  width:100%;
+  height:50px;
+  -webkit-box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.25);
+}
+
+.main-view{
+  position:absolute;
+  top:50px;
+  bottom:0px;
+  right:0px;
+  left:0px;
+}
+
+.cards{
+  overflow:auto;
+  padding-top:10px;
+  float:left;
+  width:250px;
+  height:100%;
+  -webkit-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.15);
+  -moz-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.15);
+  box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.15);
+}
+
+.card{
+  border:1px solid #ccc;
+  border-radius: 3px;
+  padding:10px;
+  margin:3px;
+}
+
+.card>.card-title{
+  font-size:25px;
+  font-weight: bold;
+}
+
+.card>.card-actions{
+  font-size:25px;
+  font-weight: bold;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.logo{
+  width:200px;
+  float:left;
+  font-size: 30px;
+  font-weight: bold;
+  padding-left:5px;
+}
+
+.card>.card-body{
+
+}
+
+.map{
+  padding-left: 3px;
+  float:left;
+  width:calc(100% - 250px);
+  height:100%;
+}
