@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(allowCrossDomain);
 
 ///todo env.conf
-app.listen(3200, () =>
+server.listen(3200, () =>
   console.log("app-server listening on port 3200!")
 );
 
