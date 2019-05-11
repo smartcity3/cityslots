@@ -6,7 +6,6 @@ app.directive('login', function() {
     };
 });
 
-
 app.directive('client', function() {
     return {
       templateUrl: './clientUI/client.html'
@@ -34,16 +33,16 @@ app.filter('counter', [function() {
 
 app.controller('clientUiController', ['$scope','$http','$interval' ,function($scope,$http,$interval) {
     $scope.userToken = "";
-    $scope.mainClientUIVisible = true;
-    $scope.loginPageVisible = false;
+    $scope.mainClientUIVisible = false;
+    $scope.loginPageVisible = true;
     $scope.slotSelectorVisible = false;
     $scope.cancelTimer = false;
     $scope.searchDate = new Date();
     $scope.searchTime = new Date(0, 0, 0, 0,0,0);
     $scope.login = function() {
         var userObject = {
-            username:$scope.username,
-            password:$scope.password
+            username:"test",
+            password:"test"
         }
         $http.post("http://172.16.220.205:3200/users/login/",userObject).then(function(response) {
             if(response.data.success){
