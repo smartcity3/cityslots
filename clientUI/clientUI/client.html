@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-4">
+        <div class="avatarDiv">
+            <img class="img img-responsive avatar" src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=BlondeGolden&facialHairType=MoustacheMagnum&facialHairColor=Auburn&clotheType=BlazerShirt&eyeType=Close&eyebrowType=UpDownNatural&mouthType=Serious&skinColor=Brown'/>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="row">
+            <div class="col-4">
+                <label style="color:#fff">50<i class="far fa-gem"></i></label>
+            </div>
+            <div class="col-4">
+                <label class="starIcon" style="color:#fff">50<i class="fas fa-star"></i></label>
+            </div>
+            <div class="col-4">
+                <label style="color:#fff;float: right">50<i class="fas fa-heart"></i></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="timer" ng-class="{'cancelTimerClass':cancelTimer,'successTimerClass':(counter > 0)}">
+                    <label class="timerLabel">{{counter | counter | date:'mm:ss'}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row filterButtons">
+    <div class="col-2">
+        <button class="btn btn-info" style="position: relative;left: -35%;border-radius:15px;">ΑΦΙΞΗ</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-primary" style="position: relative;left:-5%;border-radius:15px;">ΠΑΡΑΤΑΣΗ</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" style="position: relative;left:14%;border-radius:15px;">ΠΡΟΒΟΛΗ</button>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-danger" style="position: relative;left: 48%;border-radius:15px;">ΑΚΥΡΩΣΗ</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="mainTableDiv">
+        <table class="table table-hovered mainTable">
+            <thead>
+                <tr class="mainTableHead">
+                    <th style="border-right: 2px solid #fff;">Ώρα</th>
+                    <th style="border-right: 2px solid #fff;">Slots</th>
+                    <th>Διάρκεια</th>
+                </tr>        
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color:#fff;border-right: 2px solid #fff;">9:30</td>
+                    <td style="color:#fff;border-right: 2px solid #fff;">456</td>
+                    <td style="color:#fff;">30 λεπτά</td>
+                </tr>
+                <tr>
+                    <td style="color:#fff;border-right: 2px solid #fff;">9:30</td>
+                    <td style="color:#fff;border-right: 2px solid #fff;">456</td>
+                    <td style="color:#fff;">30 λεπτά</td>
+                </tr>
+                <tr>
+                    <td style="color:#fff;border-right: 2px solid #fff;">9:30</td>
+                    <td style="color:#fff;border-right: 2px solid #fff;">456</td>
+                    <td style="color:#fff;">30 λεπτά</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>  
+</div>
+<div class="addressSearch">
+    <div class="row">
+        <div class="col-6">
+            <label style="color:#fff;">Ημ/νια</label>
+            <input class="form-control dateAndTimeInputs" ng-model="searchDate" type="date"/>
+        </div>
+        <div class="col-6">
+            <label style="color:#fff;">Ώρα</label>
+            <input class="form-control dateAndTimeInputs" ng-model="searchTime" type="time"/>
+        </div>
+    </div>
+</div>
+
+<div class="addressSearch">
+    <div class="row">
+        <div class="col-4">
+            <label style="color:#fff;">Τοποθεσία</label>
+        </div>
+        <div class="col-6">
+            <input type="text" class="form-control dateAndTimeInputs"/>
+        </div>
+        <div class="col-2">
+            <span><i class="fas fa-heart" style="color:#fff;font-size:32px"></i></span>
+        </div>
+    </div>
+</div>
+<div class="searchButtonDiv">
+    <div class="row">
+        <button class="btn btn-primary dateAndTimeInputs" ng-click="search()"><i class="fas fa-search"></i>Αναζήτηση</button>
+    </div>
+</div>
+
+

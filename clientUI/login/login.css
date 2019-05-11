@@ -1,0 +1,23 @@
+body{
+    background-color: #004b7c;
+}
+.usernameInput,.passwordInput {
+    border-radius:15px;
+}
+
+.usernameRow {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.loginButtonDiv {
+    width: 100%;
+    text-align: center;
+    margin-top:2%;
+}
+
+.loginButton {
+    width:115px;
+    height:60px;
+    border-radius:15px;
+}

@@ -1,0 +1,35 @@
+<html ng-app="clientUiModule">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html;">
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./login/login.css">
+        <link rel="stylesheet" type="text/css" href="./clientUI/clientUi.css">
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+        
+
+        <script type="text/javascript" src="./assets/js/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.0/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.0/angular-sanitize.min.js"></script>
+        <script src="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.min.js"></script>
+        <script type="text/javascript" src="./assets/js/ui-bootstrap-tpls-2.1.4.js"></script>
+        <script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./clientUiController.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.css" />
+        <link rel="stylesheet" href="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.css" />
+    </head>
+    <body ng-controller="clientUiController">
+        <div style="width:100%;height:100%" ng-if="loginPageVisible">
+            <login></login>
+        </div>
+        <div style="width:100%;height:100%;" ng-if="mainClientUIVisible">
+            <client></client>
+        </div>
+        <div style="width:100%;height:100%;" ng-if="slotSelectorVisible">
+            <slotselector></slotselector>
+        </div>
+    </body>
+</html>
