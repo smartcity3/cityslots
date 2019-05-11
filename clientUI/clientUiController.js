@@ -39,6 +39,13 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
     $scope.cancelTimer = false;
     $scope.searchDate = new Date();
     $scope.searchTime = new Date(0, 0, 0, 0,0,0);
+
+    var connectSocket = io.connect('http://172.16.220.205:3200');
+
+    connectSocket.on('connect', function () {
+        connectSocket.emit('hi!');
+    });
+
     $scope.login = function() {
         var userObject = {
             username:"test",
