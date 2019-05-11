@@ -1,0 +1,66 @@
+.mainClientLabel {
+    color:#fff;
+}
+
+.avatar {
+    width:100px;
+    height: 100px;
+}
+
+.starIcon {
+    color:#fff;
+    width: 100%;
+    text-align: center;
+}
+
+.timer {
+    border: 2px solid #fff;
+}
+
+.timerLabel {
+    color:#fff;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.mainTableHead {
+    color:#fff;
+    font-weight: bold;
+}
+
+.mainTable {
+    width: 93%;
+    border: 2px solid #fff;
+    position: relative;
+    left: 3%;
+    top: 9%;
+}
+
+.mainTableDiv {
+    width:100%;
+}
+
+.row {
+    margin-right: 0;
+    margin-left:0;
+}
+
+.filterButtons {
+    margin-top: 2%;
+}
+
+.dateAndTimeInputs{
+    border-radius: 15px;
+}
+
+.addressSearch {
+    margin-top:5%;
+}
+
+.searchButtonDiv{
+    float:right;
+    margin-top:5%;
+    position: relative;
+    right:5%;
+}

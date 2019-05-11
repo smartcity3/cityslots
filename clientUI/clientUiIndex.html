@@ -1,0 +1,24 @@
+<html ng-app="clientUiModule">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html;">
+        <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./login/login.css">
+        <link rel="stylesheet" type="text/css" href="./clientUI/clientUi.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+        <script type="text/javascript" src="./assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="./assets/js/angular.min.js"></script>
+        <script type="text/javascript" src="./assets/js/angular-route.min.js"></script>
+        <script type="text/javascript" src="./assets/js/ui-bootstrap-tpls-2.1.4.js"></script>
+        <script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./clientUiController.js"></script>
+    </head>
+    <body ng-controller="clientUiController">
+        <div style="width:100%;height:100%" ng-if="loginPageVisible">
+            <login></login>
+        </div>
+        <div style="width:100%;height:100%;" ng-if="mainClientUIVisible">
+            <client></client>
+        </div>
+    </body>
+</html>
