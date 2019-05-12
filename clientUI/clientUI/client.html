@@ -28,7 +28,7 @@
 
 <div class="row filterButtons">
     <div class="col-2">
-        <button class="btn btn-info" style="position: relative;left: -35%;border-radius:15px;">ΑΦΙΞΗ</button>
+        <button class="btn btn-info" style="position: relative;left: -35%;border-radius:15px;" ng-click="startTimer()">ΑΦΙΞΗ</button>
     </div>
     <div class="col-3">
         <button class="btn btn-primary" style="position: relative;left:-5%;border-radius:15px;" ng-click="extraTime()">ΠΑΡΑΤΑΣΗ</button>
@@ -80,7 +80,7 @@
             <label style="color:#fff;">Τοποθεσία</label>
         </div>
         <div class="col-6">
-            <input type="text" class="form-control dateAndTimeInputs"/>
+            <input type="text" class="form-control dateAndTimeInputs" ng-model="address" ng-init = "address = 'Oρυζόμυλοι-Αιγάλεω'"/>
         </div>
         <div class="col-2">
             <span><i class="fas fa-heart" style="color:#fff;font-size:32px"></i></span>

@@ -51,14 +51,12 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
     $scope.cancelTimer = false;
     $scope.modalSlotSelectorVisible = false;
     $scope.searchDate = new Date();
-    $scope.searchTime = new Date(0, 0, 0, 0,0,0);
-    $scope.favoritePlaces = [
-
-    ]
+    $scope.searchTime = new Date(0, 0, 0, 13,0,0);
+    
     $scope.openedSlots = [
-        {ID:1,name:'3ο Δημοτικό',initial:'8:00',time:'5 λεπτά'},
-        {ID:2,name:'Πλατεία',initial:'10:15',time:'15 λεπτά'},
-        {ID:3,name:'Ιατρικό',initial:'12:20',time:'20 λεπτά'}
+        {ID:2,name:'3ο Δημοτικό',initial:'8:00',time:'5 λεπτά'},
+        {ID:4,name:'Πλατεία',initial:'10:15',time:'15 λεπτά'},
+        {ID:10,name:'Ιατρικό',initial:'12:20',time:'20 λεπτά'}
 
     ]
     var connectSocket = io.connect(conf.url);
@@ -85,20 +83,43 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
 			$scope.loginMsg = "Failed Login!"
 		});
     }
+
+    $scope.startTimer = function () {
+        $scope.counter = $scope.counter + 900; 
+        intervalTime = $interval(function(){
+            $scope.counter--;  
+            if($scope.counter == 0){
+                $interval.cancel(intervalTime);
+                intervalTime = null;
+                $scope.cancelTimer = true;
+            }
+        },1000);
+    }
+
     $scope.search = function() {
         $scope.slotSelectorVisible = true;
         $scope.mainClientUIVisible = false;
     }
-    $scope.counter = 30;
+
+    $scope.counter = 1;
     var intervalTime=null;   
-    intervalTime = $interval(function(){$scope.counter--; 
+    intervalTime = $interval(function(){
+        $scope.counter--;  
         if($scope.counter == 0){
             $interval.cancel(intervalTime);
             intervalTime = null;
             $scope.cancelTimer = true;
         }
     },1000);
-
+    
+    $scope.selectSlot = function(ID) {
+        for(var i = 0; i < $scope.openedSlots.length; i++){
+			if($scope.openedSlots[i].ID == ID){
+				$scope.selectedSlot =  $scope.openedSlots[i];
+			}
+		}
+    }
+    
     $scope.showDetails = function(id) {
         alert('lat: '+ id.lat+', '+'lon: '+id.lon);
       };
@@ -147,11 +168,13 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
     }
 
     $scope.bookSlot = function() {
-        $http.get(conf.url+"slots/bookSlot/1").then(function(response) {
-            if(response.data.success){
+        $scope.staticToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJyb2xlSUQiOjEsImlhdCI6MTU1NzU5ODcxNn0.jZ6KPM7x4vBhp3zOo6ep6kkG92UyRjBNgji-kXxcuHY"
+        $http.get(conf.url+"/slots/bookSlot/1",{ headers: {'x-access-token': $scope.staticToken} }).then(function(response) {
                 $scope.modalSlotSelectorVisible = false;
                 $scope.mainClientUIVisible = true;
-            }
+                $scope.openedSlots.push(response.data.slot);
+                $scope.diamonds += response.data.currency1;
+                $scope.orizomilon = {};
         });
     }
 
