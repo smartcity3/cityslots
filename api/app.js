@@ -21,9 +21,13 @@ const allowCrossDomain = function(req, res, next) {
 
 const app = express();
 
-////////Set up socket
+////////Set up socket////////////////////
 const server = http.createServer(app);
-socket.SocketIO.setUpSocketConection(server);
+global.io = require('socket.io').listen(server);
+io.on('connection', function(client) {
+  console.log('Client connected...', client);
+});
+////////////////////////////////////////
 
 app.use(cors());
 

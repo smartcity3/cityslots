@@ -5,7 +5,6 @@ const database = require('../database');
 const socket = require('../socket');
 //const boom = require('boom');
 
-
 router.use(security.Authentication.tokenCheckerMiddleware);
 
 router.get('/available/', function(req, res, next) {
@@ -13,7 +12,7 @@ router.get('/available/', function(req, res, next) {
 });
 
 router.get('/giveAway/', function(req, res, next) {
-    socket.SocketIO.broadcastMessage("message");
+    socket.SocketIO.broadcastMessage("broadcast","message");
     res.send({newSlot:{name: "Slot2", lat: 37.983810, lon: 23.668479 }, currency1: 5});
 });
 
