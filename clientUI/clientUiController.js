@@ -41,7 +41,9 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
         //url:"http://172.16.220.205:3200"
         url:"http://172.16.220.205:3200"
     }
-
+    $scope.star = 50;
+    $scope.heart = 35;
+    $scope.diamonds = 65;
     $scope.userToken = "";
     $scope.mainClientUIVisible = false;
     $scope.loginPageVisible = true;
@@ -50,10 +52,13 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
     $scope.modalSlotSelectorVisible = false;
     $scope.searchDate = new Date();
     $scope.searchTime = new Date(0, 0, 0, 0,0,0);
+    $scope.favoritePlaces = [
+
+    ]
     $scope.openedSlots = [
-        {name:'3ο Δημοτικό',initial:'8:00',time:'5 λεπτά'},
-        {name:'Πλατεία',initial:'10:15',time:'15 λεπτά'},
-        {name:'Ιατρικό',initial:'12:20',time:'20 λεπτά'}
+        {ID:1,name:'3ο Δημοτικό',initial:'8:00',time:'5 λεπτά'},
+        {ID:2,name:'Πλατεία',initial:'10:15',time:'15 λεπτά'},
+        {ID:3,name:'Ιατρικό',initial:'12:20',time:'20 λεπτά'}
 
     ]
     var connectSocket = io.connect(conf.url);
@@ -139,6 +144,15 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
 
     $scope.extraTime = function() {
         $scope.counter = $scope.counter + 300;
+    }
+
+    $scope.bookSlot = function() {
+        $http.get(conf.url+"slots/bookSlot/1").then(function(response) {
+            if(response.data.success){
+                $scope.modalSlotSelectorVisible = false;
+                $scope.mainClientUIVisible = true;
+            }
+        });
     }
 
 }]);
