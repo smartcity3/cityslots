@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  iotgateway:
+    image: nodered/node-red-docker
+    ports:
+        - "1880:1880"
+    expose:
+        - "1880"
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: cityslots
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+  web:
+    build: .
+    command: npm run dev
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    environment:
+      DATABASE_URL: mysql://127.0.0.1:3306/cityslotsdb
+  integrations:
+    image: cityslots/city3integrations
+    ports:
+        - "8080:8080"
+    expose:
+        - "8080"
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    expose:
+      - "15672"
+      - "5672"
+  redis:
+    image: redis:2.8
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
