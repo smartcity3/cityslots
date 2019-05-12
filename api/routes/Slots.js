@@ -13,6 +13,7 @@ router.get('/available/', function(req, res, next) {
 
 router.get('/bookSlot/:ID', function(req, res, next) {
     var slot = database.Slots.getSlotByID(req.params.ID);
+    socket.SocketIO.broadcastMessage("broadcast", {event:"hideSlot", ID: slot.ID});
     res.send({slot : slot, currency1: -5});
 });
 
