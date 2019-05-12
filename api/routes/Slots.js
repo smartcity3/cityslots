@@ -11,6 +11,11 @@ router.get('/available/', function(req, res, next) {
     res.send(database.Slots.getAvailableSlots());
 });
 
+router.get('/bookSlot/:ID', function(req, res, next) {
+    var slot = database.Slots.getSlotByID(req.params.ID);
+    res.send({slot : slot, currency1: -5});
+});
+
 router.get('/giveAway/', function(req, res, next) {
     socket.SocketIO.broadcastMessage("broadcast","message");
     res.send({newSlot:{name: "Slot2", lat: 37.983810, lon: 23.668479 }, currency1: 5});

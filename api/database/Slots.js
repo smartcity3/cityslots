@@ -1,10 +1,21 @@
 //const db = require('../dbconnection'); //reference of dbconnection.js
- 
+const slots = [{ID:1, name: "Εκκλησία", lat: 37.983837, lon: 23.668459 },
+            {ID:2, name: "Φούρνος", lat: 37.983967, lon: 23.668046 },
+            {ID:3, name: "3ο Δημοτικό", lat: 37.983684, lon: 23.668459 }];
+
 function getAvailableSlots() {
-    var slots = [{name: "Slot1", lat: 37.983837, lon: 23.668459 },
-                {name: "Slot2", lat: 37.983810, lon: 23.668479 },
-                {name: "Slot3", lat: 37.983684, lon: 23.668459 }];
     return slots;
+}
+
+function getSlotByID(id) {
+    answer = {};
+    for(let i in slots) {
+        if(slots[i].ID == id) {
+            answer = slots[i];
+            break;
+        } 
+    }
+    return answer;
 }
 
 module.exports = {
