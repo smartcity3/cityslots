@@ -18,6 +18,21 @@ app.directive('slotselector', function() {
     };
 });
 
+app.directive('ngConfirmClick', [
+    function(){
+        return {
+            link: function (scope, element, attr) {
+                var msg = attr.ngConfirmClick || "Are you sure?";
+                var clickAction = attr.confirmedClick;
+                element.bind('click',function (event) {
+                    if ( window.confirm(msg) ) {
+                        scope.$eval(clickAction)
+                    }
+                });
+            }
+        };
+    }])
+
 app.directive('slotselectormodal', function() {
     return {
       templateUrl: './modal/slotconfirmationmodal.html'
@@ -45,6 +60,7 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
     $scope.heart = 35;
     $scope.diamonds = 65;
     $scope.userToken = "";
+    $scope.selectedSlot = {};
     $scope.mainClientUIVisible = false;
     $scope.loginPageVisible = true;
     $scope.slotSelectorVisible = false;
@@ -52,7 +68,22 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
     $scope.modalSlotSelectorVisible = false;
     $scope.searchDate = new Date();
     $scope.searchTime = new Date(0, 0, 0, 13,0,0);
-    
+    function removeSlot(id) {
+        for(let i in $scope.openedSlots) {
+            if($scope.openedSlots[i].ID == id) {
+                $scope.openedSlots.splice(i, 1);
+                break;
+             }
+        }
+    }
+    $scope.changeSlot = function() {
+        console.log(conf.url+"/slots/giveAway/");
+        $http.get(conf.url+"/slots/giveAway/",{ headers: {'x-access-token': $scope.userToken} }).then(function(response) {
+            removeSlot(response.data.giveAwaySlotID);
+            $scope.openedSlots.push(response.data.newSlot);
+            $scope.heart += response.data.currency3;
+        });
+    }
     $scope.openedSlots = [
         {ID:2,name:'3ο Δημοτικό',initial:'8:00',time:'5 λεπτά'},
         {ID:4,name:'Πλατεία',initial:'10:15',time:'15 λεπτά'},
@@ -65,6 +96,13 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
         connectSocket.emit('hi!');
         connectSocket.on('broadcast', function (data) {
             console.log("here");
+            if(data.event == "giveAwayRequest") {
+                var result = confirm("Θα Θέλατε να αντικαταστήσετε το slot Εκκλήσια με το slot Φούρνος?");
+                if(result) {
+                    $scope.changeSlot();
+                }
+            }
+            
         });
     });
 
@@ -115,7 +153,10 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
     $scope.selectSlot = function(ID) {
         for(var i = 0; i < $scope.openedSlots.length; i++){
 			if($scope.openedSlots[i].ID == ID){
-				$scope.selectedSlot =  $scope.openedSlots[i];
+                delete $scope.openedSlots[i].available;
+                delete $scope.openedSlots[i].lat;
+                delete $scope.openedSlots[i].lon;
+				$scope.selectedSlotID =  $scope.openedSlots[i].ID;
 			}
 		}
     }

@@ -18,8 +18,13 @@ router.get('/bookSlot/:ID', function(req, res, next) {
 });
 
 router.get('/giveAway/', function(req, res, next) {
-    socket.SocketIO.broadcastMessage("broadcast","message");
-    res.send({newSlot:{name: "Slot2", lat: 37.983810, lon: 23.668479 }, currency1: 5});
+    socket.SocketIO.broadcastMessage("broadcast", {event:"giveAway", oldID: 1, newID: 2});
+    res.send({giveAwaySlotID: 1, newSlot: {ID:2, name: "Φούρνος", initial:'13:20', time:'20 λεπτά', lat: 37.983967, lon: 23.668046, available: true }, currency3: 5});
+});
+
+router.get('/bradcastGiveAway/', function(req, res, next) {
+    socket.SocketIO.broadcastMessage("broadcast", {event:"giveAwayRequest", slotToGiveAway: "Εκκλησία", slotToGet: "Φούρνος"});
+    res.send();
 });
 
 router.get('/moreTime/', function(req, res, next) {
