@@ -52,20 +52,10 @@
                 </tr>        
             </thead>
             <tbody>
-                <tr>
-                    <td style="color:#fff;border-right: 2px solid #fff;">8:00</td>
-                    <td style="color:#fff;border-right: 2px solid #fff;">3ο Δημοτικό</td>
-                    <td style="color:#fff;">5 λεπτά</td>
-                </tr>
-                <tr>
-                    <td style="color:#fff;border-right: 2px solid #fff;">10:15</td>
-                    <td style="color:#fff;border-right: 2px solid #fff;">Πλατεία</td>
-                    <td style="color:#fff;">15 λεπτά</td>
-                </tr>
-                <tr>
-                    <td style="color:#fff;border-right: 2px solid #fff;">12:20</td>
-                    <td style="color:#fff;border-right: 2px solid #fff;">Ιατρικό</td>
-                    <td style="color:#fff;">20 λεπτά</td>
+                <tr ng-repeat="slot in openedSlots">
+                    <td style="color:#fff;border-right: 2px solid #fff;">{{slot.initial}}</td>
+                    <td style="color:#fff;border-right: 2px solid #fff;">{{slot.name}}</td>
+                    <td style="color:#fff;">{{slot.time}}</td>
                 </tr>
             </tbody>
         </table>

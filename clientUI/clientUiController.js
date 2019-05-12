@@ -43,14 +43,19 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
     }
 
     $scope.userToken = "";
-    $scope.mainClientUIVisible = true;
-    $scope.loginPageVisible = false;
+    $scope.mainClientUIVisible = false;
+    $scope.loginPageVisible = true;
     $scope.slotSelectorVisible = false;
     $scope.cancelTimer = false;
     $scope.modalSlotSelectorVisible = false;
     $scope.searchDate = new Date();
     $scope.searchTime = new Date(0, 0, 0, 0,0,0);
+    $scope.openedSlots = [
+        {name:'3ο Δημοτικό',initial:'8:00',time:'5 λεπτά'},
+        {name:'Πλατεία',initial:'10:15',time:'15 λεπτά'},
+        {name:'Ιατρικό',initial:'12:20',time:'20 λεπτά'}
 
+    ]
     var connectSocket = io.connect(conf.url);
 
     connectSocket.on('connect', function () {
