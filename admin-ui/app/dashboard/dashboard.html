@@ -3,12 +3,18 @@
         <div class="cards">
             <div ng-repeat="itm in parkingService.slots" class="card">
                 <div class="card-title">
+                    <div ng-if="!itm.occupied" class="cardStatus" style="background-color: green;"></div>
+                    <div ng-if="itm.occupied" class="cardStatus" style="background-color: orangered;"></div>
                     {{itm.name}}
                 </div>
                 <div class="card-body">
-                    {{itm.name}}
+                    <span>
+                        <div ng-if="itm.occupied">
+                            <span class="glyphicon glyphicon-user"></span>{{itm.username}}
+                        </div>
+                    </span>
                 </div>
-                <div class="card-actions">
+                <div class="card-actions" ng-if="!itm.occupied">
                     <button class="btn btn-primary">Occupy</button>
                 </div>
             </div>

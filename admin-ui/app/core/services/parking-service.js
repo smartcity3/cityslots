@@ -19,8 +19,11 @@ angular.module('myApp.services.parking',[])
                return res.data;
             })
             .then(function(slots){
-                service.mapSlots = [];
                 slots.forEach(function(slt){
+                    slt.occupied = slots.indexOf(slt)%2==0;
+                    if(slt.occupied){
+                        slt.username='Test User';
+                    }
                     slt.label = {
                         show: true
                     };
