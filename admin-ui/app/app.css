@@ -102,8 +102,17 @@
 }
 
 .map{
-  padding-left: 3px;
+  padding-left: 0px;
   float:left;
   width:calc(100% - 250px);
   height:100%;
+}
+
+.inner-login{
+  margin:0 25%;
+  margin-top:50px;
+}
+
+.hidden{
+  display:none;
 }

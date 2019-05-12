@@ -15,28 +15,32 @@
   <link rel="stylesheet" href="lib/bootsrap/bootrap.min.css">
   <link rel="stylesheet" href="app.css">
   <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.css" />
 </head>
 <body>
   <header></header>
   <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
   <div class="main-view" ng-view></div>
-
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-sanitize.min.js"></script>
   <script src="lib/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
   <script src="lib/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+  <script src="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
   <script src="app.js"></script>
 
   <!--Services-->
   <script src="core/services/config-service.js"></script>
   <script src="core/services/parking-service.js"></script>
   <script src="core/services/websockets-service.js"></script>
+  <script src="core/services/auth-service.js"></script>
   <script src="core/services/services.js"></script>
 
   <!--More-->
@@ -46,5 +50,7 @@
   <script src="core/header/header.js"></script>
   <script src="core/version/version-directive.js"></script>
   <script src="core/version/interpolate-filter.js"></script>
+
+
 </body>
 </html>

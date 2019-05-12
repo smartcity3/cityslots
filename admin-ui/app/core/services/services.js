@@ -1,5 +1,6 @@
 angular.module('myApp.services',[
     'myApp.services.parking',
     'myApp.services.config',
-    'myApp.services.websocket'
+    'myApp.services.websocket',
+    'myApp.services.auth'
 ]);

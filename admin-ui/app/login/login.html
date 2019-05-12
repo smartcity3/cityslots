@@ -1,3 +1,20 @@
-<div>
-  Login
+<div class="row">
+  <div class="inner-login col-md-6 cls-sm-12">
+      <div class="logo" style="margin-left:26%;">City Slots</div>
+      <form class="col-md-6 col-xs-12" style="margin-left:25%;">
+          <div ng-if="msg" class="alert-warning" style="width:100%">{{msg}}</div>
+          <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="username" ng-model="loginForm.username" class="form-control" id="username">
+          </div>
+          <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" ng-model="loginForm.password" class="form-control" id="pwd">
+          </div>
+          <div class="checkbox">
+              <label><input type="checkbox" ng-model="loginForm.remember"> Remember me</label>
+          </div>
+          <button ng-click="login()" type="submit" class="btn btn-default" style="float: right;">Login</button>
+      </form>
+  </div>
 </div>

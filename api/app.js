@@ -35,6 +35,7 @@ app.use(logger('dev'));
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use("/client/",express.static(path.join(__dirname, '../clientUI')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(allowCrossDomain);
 

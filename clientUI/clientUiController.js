@@ -32,6 +32,11 @@ app.filter('counter', [function() {
 
 
 app.controller('clientUiController', ['$scope','$http','$interval' ,function($scope,$http,$interval) {
+    let conf = {
+        //url:"http://172.16.220.205:3200"
+        url:"http://127.0.0.1:3200"
+    }
+
     $scope.userToken = "";
     $scope.mainClientUIVisible = false;
     $scope.loginPageVisible = true;
@@ -40,7 +45,7 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
     $scope.searchDate = new Date();
     $scope.searchTime = new Date(0, 0, 0, 0,0,0);
 
-    var connectSocket = io.connect('http://172.16.220.205:3200');
+    var connectSocket = io.connect(conf.url);
 
     connectSocket.on('connect', function () {
         connectSocket.emit('hi!');
@@ -51,7 +56,7 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
             username:"test",
             password:"test"
         }
-        $http.post("http://172.16.220.205:3200/users/login/",userObject).then(function(response) {
+        $http.post(conf.url+"/users/login/",userObject).then(function(response) {
             if(response.data.success){
                 $scope.userToken = response.data.token;
                 $scope.loginPageVisible = false;

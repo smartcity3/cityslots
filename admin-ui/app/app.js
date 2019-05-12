@@ -8,7 +8,9 @@ angular.module('myApp', [
   'myApp.dashboard',
   'myApp.version',
   'myApp.services',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'openlayers-directive',
+  'ngSanitize'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

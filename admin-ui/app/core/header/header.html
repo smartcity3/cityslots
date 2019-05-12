@@ -1,11 +1,21 @@
 <div ng-controller="HeaderCtrl" class="header">
   <div class="logo">City Slots</div>
-  <div style="float: right;padding:7px;">
+  <div style="float: right;padding:7px;" ng-class="{'hidden':!auth.loggedUser}">
     <button class="btn btn-default"
-            uib-popover="{{dynamicPopover.content}}"
-            popover-title="{{dynamicPopover.title}}"
+            popover-placement="bottom"
+            uib-popover-template="dynamicPopover.notificationsTemplateUrl"
             type="button"
-    ><span class="glyphicon glyphicon-bell"></span></button>
-    <button class="btn btn-default"><span class="glyphicon glyphicon-user"></span>Stefanos</button>
+            popover-trigger='outsideClick'
+    >
+      <span class="glyphicon glyphicon-bell"></span>
+    </button>
+    <button popover-placement="bottom"
+            uib-popover-template="dynamicPopover.userTemplateUrl"
+            type="button"
+            class="btn btn-default"
+            popover-trigger='outsideClick'
+    >
+      <span class="glyphicon glyphicon-user"></span>Stefanos
+    </button>
   </div>
 </div>

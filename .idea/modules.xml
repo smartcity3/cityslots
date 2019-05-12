@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/admin-ui/admin-ui.iml" filepath="$PROJECT_DIR$/admin-ui/admin-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/cityslots.iml" filepath="$PROJECT_DIR$/.idea/cityslots.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clientUI/clientUI.iml" filepath="$PROJECT_DIR$/clientUI/clientUI.iml" />
     </modules>
   </component>
 </project>

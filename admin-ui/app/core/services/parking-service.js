@@ -4,21 +4,28 @@ angular.module('myApp.services.parking',[])
     let service = {};
 
     service.notifications = [{
-        msg:'Message One'
+        msg:'You have arrived to your parking slot'
     },
     {
-        msg:'Message Two'
+        msg:'Reminder for your parking reservation'
     }];
 
-    service.slots = [{
-        name:'one'
-    },
-    {
-        name:'two'
-    }];
+    service.slots = [];
 
-    service.fetchSlots = function(){
-        $http.get(config.url+'');
+    service.getAvailableSlots = function(){
+        return $http.get(config.url+'/slots/available')
+            .then(function(res){
+               service.slots = res.data;
+               return res.data;
+            })
+            .then(function(slots){
+                service.mapSlots = [];
+                slots.forEach(function(slt){
+                    slt.label = {
+                        show: true
+                    };
+                })
+            });
     }
 
     return service;
