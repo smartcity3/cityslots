@@ -24,9 +24,7 @@ const app = express();
 ////////Set up socket////////////////////
 const server = http.createServer(app);
 global.io = require('socket.io').listen(server);
-io.on('connection', function(client) {
-  console.log('Client connected...', client);
-});
+socket.SocketIO.createSocketConnection();
 ////////////////////////////////////////
 
 app.use(cors());

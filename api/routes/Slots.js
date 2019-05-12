@@ -3,7 +3,7 @@ const router = express.Router();
 const security = require('../security');
 const database = require('../database');
 const socket = require('../socket');
-//const boom = require('boom');
+//const boom = require('boom'); Error Handling
 
 router.use(security.Authentication.tokenCheckerMiddleware);
 
