@@ -7,8 +7,6 @@
         <link rel="stylesheet" type="text/css" href="./login/login.css">
         <link rel="stylesheet" type="text/css" href="./clientUI/clientUi.css">
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-        
-
         <script type="text/javascript" src="./assets/js/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.js"></script>
         <script src="https://code.angularjs.org/1.4.0/angular.min.js"></script>
@@ -17,7 +15,8 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.min.js"></script>
         <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
         <script type="text/javascript" src="http://172.16.220.205:3200/socket.io/socket.io.js"></script>
-        <script type="text/javascript" src="./assets/js/ui-bootstrap-tpls-2.1.4.js"></script>
+        <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+
         <script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="./clientUiController.js"></script>
 
@@ -33,6 +32,9 @@
         </div>
         <div style="width:100%;height:100%;" ng-if="slotSelectorVisible">
             <slotselector></slotselector>
+        </div>
+        <div style="width:100%;height:100%;" ng-if="modalSlotSelectorVisible">
+            <slotselectormodal></slotselectormodal>
         </div>
     </body>
 </html>

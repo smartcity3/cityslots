@@ -3,10 +3,10 @@
 <div class="row userNameRow">
     <div class="col-sm-12">
         <label style="color:#fff;font-weight: bold"><i class="fas fa-user"></i>Username</label>
-        <input type="text" ng-model="username" class="form-control usernameInput"/>
+        <input type="text" ng-model="username" class="form-control usernameInput" ng-init="username='nikos'"/>
     </div>
     <div class="col-sm-12">
-        <label style="color:#fff;font-weight: bold"><i class="fas fa-key"></i>Password</label>
+        <label style="color:#fff;font-weight: bold" ng-init="password='nikos'"><i class="fas fa-key"></i>Password</label>
         <input type="password" ng-model="password" class="form-control passwordInput"/>
     </div>
     <div class="col-sm-12">

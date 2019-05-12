@@ -72,3 +72,13 @@
     position: relative;
     right:5%;
 }
+
+.getSlot {
+    position: absolute;
+    width: 350px;
+    height: 200px;
+    z-index: 15;
+    top: 50%;
+    left: 56%;
+    margin: -100px 0 0 -150px;
+}

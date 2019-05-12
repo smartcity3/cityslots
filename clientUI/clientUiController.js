@@ -18,6 +18,11 @@ app.directive('slotselector', function() {
     };
 });
 
+app.directive('slotselectormodal', function() {
+    return {
+      templateUrl: './modal/slotconfirmationmodal.html'
+    };
+});
 app.filter('counter', [function() {
     return function(seconds) {
         return new Date(1970, 0, 1).setSeconds(seconds);
@@ -34,14 +39,15 @@ app.filter('counter', [function() {
 app.controller('clientUiController', ['$scope','$http','$interval' ,function($scope,$http,$interval) {
     let conf = {
         //url:"http://172.16.220.205:3200"
-        url:"http://127.0.0.1:3200"
+        url:"http://172.16.220.205:3200"
     }
 
     $scope.userToken = "";
-    $scope.mainClientUIVisible = false;
-    $scope.loginPageVisible = true;
+    $scope.mainClientUIVisible = true;
+    $scope.loginPageVisible = false;
     $scope.slotSelectorVisible = false;
     $scope.cancelTimer = false;
+    $scope.modalSlotSelectorVisible = false;
     $scope.searchDate = new Date();
     $scope.searchTime = new Date(0, 0, 0, 0,0,0);
 
@@ -49,6 +55,9 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
 
     connectSocket.on('connect', function () {
         connectSocket.emit('hi!');
+        connectSocket.on('broadcast', function (data) {
+            console.log("here");
+        });
     });
 
     $scope.login = function() {
@@ -70,7 +79,7 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
         $scope.slotSelectorVisible = true;
         $scope.mainClientUIVisible = false;
     }
-    $scope.counter = 10;
+    $scope.counter = 30;
     var intervalTime=null;   
     intervalTime = $interval(function(){$scope.counter--; 
         if($scope.counter == 0){
@@ -117,4 +126,14 @@ app.controller('clientUiController', ['$scope','$http','$interval' ,function($sc
         }
     }
     });
+
+    $scope.openSlotSelectorModal = function() {
+        $scope.modalSlotSelectorVisible = true;
+        $scope.slotSelectorVisible = false;
+    }
+
+    $scope.extraTime = function() {
+        $scope.counter = $scope.counter + 300;
+    }
+
 }]);
