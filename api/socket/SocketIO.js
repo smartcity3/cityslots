@@ -5,6 +5,7 @@ function createSocketConnection() {
 }
 
 function broadcastMessage(event, message) {
+    console.log("BROADCAST",event,message);
     io.emit(event, message);
 }
 

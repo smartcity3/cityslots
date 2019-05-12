@@ -38,8 +38,8 @@ app.filter('counter', [function() {
 
 app.controller('clientUiController', ['$scope','$http','$interval' ,function($scope,$http,$interval) {
     let conf = {
+        url:"http://127.0.0.1:3200"
         //url:"http://172.16.220.205:3200"
-        url:"http://172.16.220.205:3200"
     }
     $scope.star = 50;
     $scope.heart = 35;

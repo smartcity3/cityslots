@@ -1,6 +1,6 @@
 angular.module('myApp.services.parking',[])
 
-.factory('ParkingService',['$http','GlobalConfigService','WebsocketService',function($http,config,socket){
+.factory('ParkingService',['$http','GlobalConfigService',function($http,config){
     let service = {};
 
     service.notifications = [{
@@ -20,8 +20,7 @@ angular.module('myApp.services.parking',[])
             })
             .then(function(slots){
                 slots.forEach(function(slt){
-                    slt.occupied = slots.indexOf(slt)%2==0;
-                    if(slt.occupied){
+                    if(!slt.available){
                         slt.username='Test User';
                     }
                     slt.label = {
@@ -29,6 +28,29 @@ angular.module('myApp.services.parking',[])
                     };
                 })
             });
+    }
+
+    service.reserveSlotById = function(id){
+        console.log("msg",id);
+        service.slots.forEach(function(slt){
+            if(slt.ID===id){
+                slt.available = false;
+                slt.username = 'Test User';
+            }
+        })
+    }
+
+    service.changeSlotById = function(oldId,newId){
+        service.slots.forEach(function(slt){
+            if(slt.ID===oldId){
+                slt.available = true;
+                slt.username = null;
+            }
+            if(slt.ID===newId){
+                slt.available = false;
+                slt.username = 'Test User';
+            }
+        })
     }
 
     return service;

@@ -1,0 +1,5 @@
+ubi\core\citychallenge3\integrations\services\CitySlotsGamesparksService.class
+ubi\core\citychallenge3\integrations\dto\PointsRequest.class
+ubi\core\citychallenge3\integrations\controllers\CitySlotsController.class
+ubi\core\citychallenge3\integrations\IntegrationsApplication.class
+ubi\core\citychallenge3\integrations\services\CitySlotsService.class

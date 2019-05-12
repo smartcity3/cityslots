@@ -3,25 +3,25 @@
         <div class="cards">
             <div ng-repeat="itm in parkingService.slots" class="card">
                 <div class="card-title">
-                    <div ng-if="!itm.occupied" class="cardStatus" style="background-color: green;"></div>
-                    <div ng-if="itm.occupied" class="cardStatus" style="background-color: orangered;"></div>
+                    <div ng-if="itm.available" class="cardStatus" style="background-color: green;"></div>
+                    <div ng-if="!itm.available" class="cardStatus" style="background-color: orangered;"></div>
                     {{itm.name}}
                 </div>
                 <div class="card-body">
                     <span>
-                        <div ng-if="itm.occupied">
+                        <div ng-if="!itm.available">
                             <span class="glyphicon glyphicon-user"></span>{{itm.username}}
                         </div>
                     </span>
                 </div>
-                <div class="card-actions" ng-if="!itm.occupied">
+                <div class="card-actions" ng-if="itm.available">
                     <button class="btn btn-primary">Occupy</button>
                 </div>
             </div>
         </div>
         <div class="map">
             <openlayers ol-center="center" height="100%" width="100%">
-                <ol-marker ng-repeat="slt in parkingService.slots" ol-marker-properties="slt"><span>{{slt.name}}</span></ol-marker>
+                <ol-marker ng-repeat="slt in parkingService.slots|filter:{available:true}" ol-marker-properties="slt"><span>{{slt.name}}</span></ol-marker>
             </openlayers>
 <!--            <div class="mapouter">-->
 <!--                <div class="gmap_canvas">-->

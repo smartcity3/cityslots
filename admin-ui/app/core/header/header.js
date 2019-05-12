@@ -10,7 +10,7 @@ angular.module('myApp.header', ['ngRoute'])
         }
     }
 }])
-.controller('HeaderCtrl', ['$scope','$location','AuthService','ParkingService',function($scope,$location,auth,parkingService) {
+.controller('HeaderCtrl', ['$scope','$location','AuthService','ParkingService','WebsocketService',function($scope,$location,auth,parkingService,socket) {
     $scope.auth = auth;
     $scope.parkingService = parkingService;
 

@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/admin-ui/admin-ui.iml" filepath="$PROJECT_DIR$/admin-ui/admin-ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../base/base.iml" filepath="$PROJECT_DIR$/../base/base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/citychallenge3/city3.integrations/city3integrations.iml" filepath="$PROJECT_DIR$/citychallenge3/city3.integrations/city3integrations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/citychallenge3/citychallenge3.iml" filepath="$PROJECT_DIR$/citychallenge3/citychallenge3.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/cityslots.iml" filepath="$PROJECT_DIR$/.idea/cityslots.iml" />
       <module fileurl="file://$PROJECT_DIR$/clientUI/clientUI.iml" filepath="$PROJECT_DIR$/clientUI/clientUI.iml" />
     </modules>
